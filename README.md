@@ -5,4 +5,4 @@ Com o objetivo de ajudar um restaurante que gasta inúmeros papéis diariamente 
 ### Observações:
 
 - O sistema será acessado apenas por um administrador geral, e os garçons do estabelecimento através de seus logins;
-- Vale ressaltar que o administrador pode realizar qualquer tipo de operação, seja relacionada com os cadastros dos garçons, dos produtos, pedidos, exclusão dos mesmos, visualização, alteração, enquanto os garçons terão apenas algumas operações disponíveis relacionadas com os pedidos que serão feitos ao atender os clientes;
+- Vale ressaltar que o administrador pode realizar qualquer tipo de operação, seja relacionada com os cadastros dos garçons, dos produtos, pedidos, exclusão dos mesmos, visualização, alteração, enquanto os garçons terão apenas algumas operações disponíveis relacionadas com os pedidos que serão feitos ao atender os clientes.
