@@ -6,6 +6,21 @@ import restaurante.dados.Conta;
 public class ContaCrud {
     public ArrayList<Conta> listConta = new ArrayList<Conta>();
 
+    
+    //Login - Depois modificar daqui
+    public void login(int cod, double tota){
+        //Conta nomeLogin = null;
+        for(Conta contas: listConta){
+            if(cod == contas.getCodConta()){
+                if(tota == contas.getTotal()){
+                    System.out.println("\n-> Senha e login encontradas com sucesso");
+                }else{
+                    System.out.println("\n-> Senha incorreta");
+                }
+            }
+        }
+    }
+    
     public void addConta(Conta conta){
         this.listConta.add(conta);
     }
