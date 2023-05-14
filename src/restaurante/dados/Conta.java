@@ -6,7 +6,7 @@ public class Conta {
     public int codConta;
     public double total;
     public boolean statusConta;
-    public ArrayList<Clube> listCodPedido = new ArrayList<Clube>();
+    public ArrayList<Pedido> listCodPedido = new ArrayList<Pedido>();
 
     public Conta(){
     }
@@ -42,10 +42,10 @@ public class Conta {
     public void setStatusConta(boolean statusConta) {
         this.statusConta = statusConta;
     }
-    public ArrayList<Clube> getListCodPedido() {
+    public ArrayList<Pedido> getListCodPedido() {
         return listCodPedido;
     }
-    public void setListCodPedido(ArrayList<Clube> listCodPedido) {
+    public void setListCodPedido(ArrayList<Pedido> listCodPedido) {
         this.listCodPedido = listCodPedido;
     }
 }
