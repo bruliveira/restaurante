@@ -18,7 +18,7 @@ public class Produto {
 	}
 	@Override
 	public String toString() {
-		String textoProduto = this.nome + ", Código: " + this.codigo + ", Categoria: " + this.codigoCategoria + ", Preço: " + this.preco + ", Quantidade: " + this.quantidade;
+		String textoProduto = "- " + this.nome + ", Código: " + this.codigo + ", Categoria: " + this.codigoCategoria + ", Preço: " + this.preco + ", Quantidade: " + this.quantidade;
 		return textoProduto;
 	}
 
