@@ -21,18 +21,32 @@ public class ContaCrud {
             }
         }
     }
-    
-    public void addConta(Conta conta, Pedido pedidos){
+    public void addContaPrimeira(Conta conta, Pedido pedidos){
         double totalConta = conta.getTotal() + pedidos.getTotal();
         conta.listCodPedido.add(pedidos);
         this.listConta.add(conta);
-        
         conta.setTotal(totalConta);
+    }
+
+    public void addConta(Conta conta, Pedido pedidos){
+        double totalConta = conta.getTotal() + pedidos.getTotal();
+        for(Conta contas: listConta){
+            //System.out.println("\n" + contas);
+            if(conta.getCodConta() == contas.getCodConta()){
+                //this.listaPedido.add(pedido);
+                conta.listCodPedido.add(pedidos);
+                conta.setTotal(totalConta);
+            }else{
+                conta.listCodPedido.add(pedidos);
+                this.listConta.add(conta);
+                conta.setTotal(totalConta);
+            }
+        }
     }
     public void listarTodasConta(){
         System.out.println("----- Todas as contas -----");
         for(Conta contas: listConta){
-            System.out.println("\n" + contas);
+            System.out.println(contas);
         }
     }
     public Conta buscarConta(int codConta){
@@ -55,9 +69,11 @@ public class ContaCrud {
     public void finalizarConta(int codConta){
         Conta finalizaConta = buscarConta(codConta);
         if(finalizaConta != null){
+            double totalPagar = finalizaConta.getTotal();
+            System.out.println("\n-> Total da conta a ser pagar: " + totalPagar);
             finalizaConta.setStatusConta(false);
         }else{
-            System.out.println("-> Conta não encontrada no sistema ");
+            System.out.println("\n-> Conta não encontrada no sistema ");
         }
     }
     

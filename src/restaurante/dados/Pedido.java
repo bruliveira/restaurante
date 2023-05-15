@@ -18,10 +18,10 @@ public class Pedido{
     @Override
 	public String toString() {
 		String textoPedidos = "Pedido: " + this.codPedido + 
-				"\nProdutos: " + this.listcodProduto + 
-                "\nMesa: " + this.codMesa + 
-                "\nTotal: " + this.total + 
-                "\nStatus do Pedido: " + this.statusPedido;
+				" -> Produtos: " + this.listcodProduto + 
+                " -> Mesa: " + this.codMesa + 
+                " -> Total: " + this.total + 
+                " -> Status do Pedido: " + this.statusPedido ;
 		return textoPedidos;
 	}
 
