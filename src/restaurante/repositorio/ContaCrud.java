@@ -8,7 +8,6 @@ public class ContaCrud {
     public ArrayList<Conta> listConta = new ArrayList<Conta>();
 
     
-
     public void login(int cod, double tota){
         //Conta nomeLogin = null;
         for(Conta contas: listConta){
@@ -20,12 +19,6 @@ public class ContaCrud {
                 }
             }
         }
-    }
-    public void addContaPrimeira(Conta conta, Pedido pedidos){
-        double totalConta = conta.getTotal() + pedidos.getTotal();
-        conta.listCodPedido.add(pedidos);
-        this.listConta.add(conta);
-        conta.setTotal(totalConta);
     }
 
     public void addConta(Conta conta, Pedido pedidos){
@@ -82,6 +75,7 @@ public class ContaCrud {
             double totalPagar = finalizaConta.getTotal();
             System.out.println("\n-> Total da conta a ser pagar: " + totalPagar);
             finalizaConta.setStatusConta(false);
+            listConta.remove(finalizaConta);
         }else{
             System.out.println("\n-> Conta não encontrada no sistema ");
         }
