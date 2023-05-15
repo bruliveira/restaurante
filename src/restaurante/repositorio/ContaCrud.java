@@ -7,20 +7,6 @@ import restaurante.dados.Pedido;
 public class ContaCrud {
     public ArrayList<Conta> listConta = new ArrayList<Conta>();
 
-    
-    public void login(int cod, double tota){
-        //Conta nomeLogin = null;
-        for(Conta contas: listConta){
-            if(cod == contas.getCodConta()){
-                if(tota == contas.getTotal()){
-                    System.out.println("\n-> Senha e login encontradas com sucesso");
-                }else{
-                    System.out.println("\n-> Senha incorreta");
-                }
-            }
-        }
-    }
-
     public void addConta(Conta conta, Pedido pedidos){
         double totalConta = conta.getTotal() + pedidos.getTotal();
         Conta contaAdd = null;
@@ -46,7 +32,7 @@ public class ContaCrud {
         }
     }
     public void listarTodasContaAbertas(){
-        System.out.println("----- Contas em aberto-----");
+        System.out.println("----- Contas em aberto -----");
         for(Conta contas: listConta){
             if(contas.getStatusConta() == true){
                 System.out.println(contas);
@@ -75,7 +61,6 @@ public class ContaCrud {
             double totalPagar = finalizaConta.getTotal();
             System.out.println("\n-> Total da conta a ser pagar: " + totalPagar);
             finalizaConta.setStatusConta(false);
-            listConta.remove(finalizaConta);
         }else{
             System.out.println("\n-> Conta não encontrada no sistema ");
         }
