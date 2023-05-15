@@ -65,7 +65,16 @@ public class ContaCrud {
             System.out.println("\n-> Conta não encontrada no sistema ");
         }
     }
-    
+    public void alterarConta(int codContaAnterior, int codContaNova){
+        Conta alteraConta = buscarConta(codContaAnterior);
+        if(alteraConta != null){
+            System.out.println("Código anterior: " + alteraConta.getCodConta());
+            alteraConta.setCodConta(codContaNova);
+            System.out.println("Código atual: " + alteraConta.getCodConta());
+        }
+
+    }
+
     public ArrayList<Conta> getListConta() {
         return listConta;
     }
