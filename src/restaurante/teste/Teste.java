@@ -4,13 +4,24 @@ import restaurante.dados.Conta;
 import restaurante.dados.Pedido;
 import restaurante.dados.Produto;
 import restaurante.dados.Usuario;
+import restaurante.dados.*;
+import restaurante.repositorio.CategoriaCrud;
 import restaurante.repositorio.ContaCrud;
 import restaurante.repositorio.GarcomCrud;
 import restaurante.repositorio.PedidoCrud;
+import restaurante.repositorio.ProdutoCrud;
 
 public class Teste{
     public static void main(String[] args) {
         System.out.println("\n---------- RESTAURANTE ----------");
+
+        //cadastros
+        UsuarioAdministrador adm = new UsuarioAdministrador("eu","eu","123");
+        ProdutoCrud.Criar();
+        GarcomCrud.criar();
+        CategoriaCrud.Criar();
+        adm.TelaAdministrador();
+
 
         //Produtos
         Produto produto1 = new Produto("Suco de laranja", 12, 5, 5, 1);
@@ -26,7 +37,7 @@ public class Teste{
         
         
         PedidoCrud pedidos = new PedidoCrud();
-        pedidos.addPedidoZero(pedido1, produto1);
+        //pedidos.addPedidoZero(pedido1, produto1);
         pedidos.addPedido(pedido1, produto2);
         pedidos.addPedido(pedido1, produto1);
         pedidos.listarTodosPedidos();

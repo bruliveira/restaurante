@@ -73,7 +73,7 @@ public class GarcomCrud {
 		}while(g == null);
 		
 		System.out.println("garcom demitido");
-		System.out.println("|id | nome | Acesso|");
+		System.out.println("|nome | login | status|");
 		System.out.println("|" + g.getNome() + "|" + g.getLogin() + "|" + g.getStatus() + "|");
 		System.out.println("\naperte ENTER para voltar");
 		scanner.nextLine();
@@ -142,7 +142,7 @@ public class GarcomCrud {
 		}while(g == null);
 		
 		System.out.println("garcom ");
-		System.out.println("|id | nome | Acesso|");
+		System.out.println("|nome | login | status|");
 		System.out.println("|" + g.getNome() + "|" + g.getLogin() + "|" + g.getStatus() + "|");
 		System.out.println("\naperte ENTER para voltar");
 		scanner.nextLine();
