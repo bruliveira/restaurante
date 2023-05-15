@@ -8,7 +8,7 @@ public class ContaCrud {
     public ArrayList<Conta> listConta = new ArrayList<Conta>();
 
     
-    //Login - Depois modificar daqui
+
     public void login(int cod, double tota){
         //Conta nomeLogin = null;
         for(Conta contas: listConta){
@@ -30,17 +30,20 @@ public class ContaCrud {
 
     public void addConta(Conta conta, Pedido pedidos){
         double totalConta = conta.getTotal() + pedidos.getTotal();
+        Conta contaAdd = null;
         for(Conta contas: listConta){
-            //System.out.println("\n" + contas);
             if(conta.getCodConta() == contas.getCodConta()){
-                //this.listaPedido.add(pedido);
-                conta.listCodPedido.add(pedidos);
-                conta.setTotal(totalConta);
-            }else{
-                conta.listCodPedido.add(pedidos);
-                this.listConta.add(conta);
-                conta.setTotal(totalConta);
+                contaAdd = contas;
+                break;
             }
+        }
+        if(contaAdd != null){
+            conta.listCodPedido.add(pedidos);
+            conta.setTotal(totalConta);
+        }else{
+            conta.listCodPedido.add(pedidos);
+            this.listConta.add(conta);
+            conta.setTotal(totalConta);
         }
     }
     public void listarTodasConta(){
@@ -49,9 +52,16 @@ public class ContaCrud {
             System.out.println(contas);
         }
     }
+    public void listarTodasContaAbertas(){
+        System.out.println("----- Contas em aberto-----");
+        for(Conta contas: listConta){
+            if(contas.getStatusConta() == true){
+                System.out.println(contas);
+            }
+        }
+    }
     public Conta buscarConta(int codConta){
         for(Conta contas: listConta){
-            //System.out.println("\n" + contas);
             if(codConta == contas.getCodConta()){
                 return contas;
             }

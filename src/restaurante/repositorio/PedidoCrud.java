@@ -15,15 +15,20 @@ public class PedidoCrud{
     }
     public void addPedido(Pedido pedido, Produto produtos){
         double totalPedido = pedido.getTotal() + (produtos.getQuantidade() * produtos.getPreco());
+        Pedido pedidoAdd = null;
         for(Pedido pedidos: listaPedido){
             if(pedido.getCodPedido() == pedidos.getCodPedido()){
-                pedido.listcodProduto.add(produtos);
-                pedido.setTotal(totalPedido);
-            }else{
-                pedido.listcodProduto.add(produtos);
-                this.listaPedido.add(pedido);
-                pedido.setTotal(totalPedido);
+                pedidoAdd = pedidos;
+                break;
             }
+        }
+        if(pedidoAdd != null){
+            pedido.listcodProduto.add(produtos);
+            pedido.setTotal(totalPedido);
+        }else{
+            pedido.listcodProduto.add(produtos);
+            this.listaPedido.add(pedido);
+            pedido.setTotal(totalPedido);
         }
     }
     public void listarTodosPedidos(){

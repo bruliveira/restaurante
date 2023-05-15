@@ -17,7 +17,7 @@ public class Conta {
     }
     @Override
 	public String toString() {
-		String textoContas = "-> Conta " + this.codConta + 
+		String textoContas = "\n-> Conta " + this.codConta + 
 				"\nPedidos: " + this.listCodPedido + 
                 "\nTotal: " + this.total + 
                 "\nStatus da conta: " + this.statusConta;
