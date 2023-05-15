@@ -1,9 +1,11 @@
-package Repositorios;
+package restaurante.repositorio;
 
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import Dados.*;
+import restaurante.dados.Categoria;
+
+
 
 public class CategoriaCrud {
 	static int codigo = 0;

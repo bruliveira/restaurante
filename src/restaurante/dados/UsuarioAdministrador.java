@@ -1,11 +1,16 @@
-package Dados;
+package restaurante.dados;
 
 import java.util.Scanner;
 
-import Repositorios.*;
+import restaurante.repositorio.CategoriaCrud;
+import restaurante.repositorio.GarcomCrud;
+import restaurante.repositorio.ProdutoCrud;
+
 
 public class UsuarioAdministrador extends Usuario {
 	Scanner scanner = new Scanner(System.in);
+
+	//GarcomCrud contas = new GarcomCrud();
 
 	public UsuarioAdministrador(String nome, String login, String senha)
 	{
@@ -79,20 +84,20 @@ int opcao;
 			switch(opcao)
 			{
 			case 1:
-				RepositorioGarcom.CadastraGarcom();
+				GarcomCrud.CadastraGarcom();
 				break;
 				
 			case 2:
-				RepositorioGarcom.ListaGarcom();
+				GarcomCrud.ListaGarcom();
 				 
 				break;
 			
 			case 3:
-				RepositorioGarcom.EditarGarcom();
+				GarcomCrud.EditarGarcom();
 				break;
 				
 			case 4:
-				RepositorioGarcom.Demitir();
+				GarcomCrud.Demitir();
 				break;
 				
 			case 5:
@@ -130,20 +135,20 @@ int opcao;
 			switch(opcao)
 			{
 			case 1:
-				RepositorioProduto.CadastraProduto();
+				ProdutoCrud.CadastraProduto();
 				break;
 				
 			case 2:
-				RepositorioProduto.ListaProduto();
+				ProdutoCrud.ListaProduto();
 				 
 				break;
 			
 			case 3:
-				RepositorioProduto.EditarProduto();
+				ProdutoCrud.EditarProduto();
 				break;
 				
 			case 4:
-				RepositorioProduto.Removerproduto();
+				ProdutoCrud.Removerproduto();
 				break;
 				
 			case 5:
@@ -181,20 +186,20 @@ int opcao;
 			switch(opcao)
 			{
 			case 1:
-				RepositorioCategoria.CadastraCategoria();
+				CategoriaCrud.CadastraCategoria();
 				break;
 				
 			case 2:
-				RepositorioCategoria.ListaCategorias();
+				CategoriaCrud.ListaCategorias();
 				 
 				break;
 			
 			case 3:
-				RepositorioCategoria.EditarCategoria();
+				CategoriaCrud.EditarCategoria();
 				break;
 				
 			case 4:
-				RepositorioCategoria.RemoverCategoria();
+				CategoriaCrud.RemoverCategoria();
 				break;
 				
 			case 5:

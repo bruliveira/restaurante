@@ -1,16 +1,50 @@
 package restaurante.teste;
 
-import restaurante.dados.Clube;
 import restaurante.dados.Conta;
+import restaurante.dados.Pedido;
+import restaurante.dados.Produto;
+import restaurante.dados.Usuario;
 import restaurante.repositorio.ContaCrud;
+import restaurante.repositorio.GarcomCrud;
+import restaurante.repositorio.PedidoCrud;
+import restaurante.repositorio.ProdutoCrud;
 
 public class Teste{
     public static void main(String[] args) {
         System.out.println("\n---------- RESTAURANTE ----------");
         
-        //Testando conta
+        Usuario usuario1 = new Usuario("pedro", "pedro123", "123");
+
+        GarcomCrud garc = new GarcomCrud();
+        
+        new Produto("Suco de laranja", 12, 5, 5, 34);
+        Produto produto1 = new Produto("Suco de laranja", 12, 5, 5, 34);
+        //Pedido
+        Pedido pedido1 = new Pedido(1, 2, 5, false);
+        //pedido1.listcodProduto.add(produto1);
+
+        System.out.println("Pedidos");
+        PedidoCrud pedidos = new PedidoCrud();
+        pedidos.addPedido(pedido1, produto1);
+        pedidos.listarTodosPedidos();
+
+        System.out.println("\nConta");
         Conta conta1 = new Conta(1, 70, true);
-        conta1.listCodPedido.add(pedido1);
+
+        //conta1.listCodPedido.add(pedido1);
+
+        ContaCrud contas = new ContaCrud();
+
+        contas.addConta(conta1, pedido1);
+
+        contas.listarTodasConta();
+
+    }
+}
+/*
+//Testando conta
+        Conta conta1 = new Conta(1, 70, true);
+        //conta1.listCodPedido.add(pedido1);
         Conta conta2 = new Conta(3, 10, true);
         Conta conta3 = new Conta(6, 5, true);
         Conta conta4 = new Conta(8, 3, true);
@@ -25,5 +59,6 @@ public class Teste{
         System.out.println(contas.buscarConta(1));
         contas.removerConta(6);
         contas.listarTodasConta();
-    }
-}
+
+
+ */

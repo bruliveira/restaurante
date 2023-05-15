@@ -1,4 +1,4 @@
-package Dados;
+package restaurante.dados;
 
 public class Produto {
 	private String nome;
@@ -15,6 +15,11 @@ public class Produto {
 		this.preco = preco;
 		this.quantidade = quantidade;
 		
+	}
+	@Override
+	public String toString() {
+		String textoProduto = this.nome + ", Código: " + this.codigo + ", Categoria: " + this.codigoCategoria + ", Preço: " + this.preco + ", Quantidade: " + this.quantidade;
+		return textoProduto;
 	}
 
 	public String getNome() {

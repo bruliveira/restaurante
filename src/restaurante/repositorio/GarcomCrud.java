@@ -1,9 +1,10 @@
-package Repositorios;
+package restaurante.repositorio;
 
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import Dados.*;
+import restaurante.dados.UsuarioGarcom;
+
 
 public class GarcomCrud {
 	

@@ -2,6 +2,7 @@ package restaurante.repositorio;
 
 import java.util.ArrayList;
 import restaurante.dados.Conta;
+import restaurante.dados.Pedido;
 
 public class ContaCrud {
     public ArrayList<Conta> listConta = new ArrayList<Conta>();
@@ -21,8 +22,12 @@ public class ContaCrud {
         }
     }
     
-    public void addConta(Conta conta){
+    public void addConta(Conta conta, Pedido pedidos){
+        double totalConta = conta.getTotal() + pedidos.getTotal();
+        conta.listCodPedido.add(pedidos);
         this.listConta.add(conta);
+        
+        conta.setTotal(totalConta);
     }
     public void listarTodasConta(){
         System.out.println("----- Todas as contas -----");

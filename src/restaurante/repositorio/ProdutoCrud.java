@@ -1,9 +1,13 @@
-package Repositorios;
+package restaurante.repositorio;
 
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import Dados.*;
+import restaurante.dados.Categoria;
+import restaurante.dados.Produto;
+
+
+
 
 public class ProdutoCrud {
 	
