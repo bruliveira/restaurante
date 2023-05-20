@@ -3,9 +3,7 @@ package restaurante.teste;
 import restaurante.dados.Conta;
 import restaurante.dados.Pedido;
 import restaurante.dados.Produto;
-import restaurante.dados.Usuario;
 import restaurante.repositorio.ContaCrud;
-import restaurante.repositorio.GarcomCrud;
 import restaurante.repositorio.PedidoCrud;
 
 public class Teste{
@@ -24,16 +22,15 @@ public class Teste{
         Pedido pedido3 = new Pedido(3, 50, false);
         Pedido pedido4 = new Pedido(4, 20, false);
         
-        
         PedidoCrud pedidos = new PedidoCrud();
-        pedidos.addPedidoZero(pedido1, produto1);
+        //pedidos.addPedidoZero(pedido1, produto1);
         pedidos.addPedido(pedido1, produto2);
         pedidos.addPedido(pedido1, produto1);
+        pedidos.addPedido(pedido2, produto1);
+        pedidos.addPedido(pedido2, produto1);
         pedidos.listarTodosPedidos();
 
-
         System.out.println("Pedidos busca: ");
-        //pedidos.buscarPedido(2);
 
         System.out.println("\nConta");
         Conta conta1 = new Conta(1, 0, true);
@@ -47,9 +44,14 @@ public class Teste{
         contas.addConta(conta2, pedido2);
         contas.addConta(conta2, pedido1);
         contas.addConta(conta3, pedido1);
+        contas.addConta(conta3, pedido4);
 
-        contas.removerConta(3);
         contas.listarTodasConta();
+
+        contas.finalizarConta(3);
+        contas.alterarConta(1, 8);
+        contas.listarTodasContaAbertas();
+       
 
     }
 }
