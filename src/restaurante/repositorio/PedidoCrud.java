@@ -4,9 +4,10 @@ import java.util.ArrayList;
 import restaurante.dados.Pedido;
 import restaurante.dados.Produto;
 
-public class PedidoCrud{
+public class PedidoCrud implements IRepositorioPedidio{
     public ArrayList<Pedido> listaPedido = new ArrayList<Pedido>();
 
+    @Override
     public void addPedido(Pedido pedido, Produto produtos){
         double totalPedido = pedido.getTotal() + (produtos.getQuantidade() * produtos.getPreco());
         Pedido pedidoAdd = null;
@@ -25,6 +26,7 @@ public class PedidoCrud{
             pedido.setTotal(totalPedido);
         }
     }
+    @Override
     public void listarTodosPedidos(){
         System.out.println("----- Todas os pedidos -----");
         for(Pedido pedidos: listaPedido){

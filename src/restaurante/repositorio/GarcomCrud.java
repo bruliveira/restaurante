@@ -6,21 +6,22 @@ import java.util.Scanner;
 import restaurante.dados.UsuarioGarcom;
 
 
-public class GarcomCrud {
+public class GarcomCrud implements IRepositorioGarcom{
 	
 	static Scanner scanner = new Scanner(System.in);
 	
 	private static ArrayList<UsuarioGarcom> lisGarcom = new ArrayList<UsuarioGarcom>();
 	
-	public static void criar()
+	@Override
+	public void criar()
 	{
 		lisGarcom.add(new UsuarioGarcom("g1","ga1","321"));
 		lisGarcom.add(new UsuarioGarcom("g2","ga2","3241"));
 		lisGarcom.add(new UsuarioGarcom("g3","ga3","3321"));
 		lisGarcom.add(new UsuarioGarcom("g4","ga4","32451"));
 	}
-	
-	public static void CadastraGarcom()
+	@Override
+	public void CadastraGarcom()
 	{
 		String nome;
 		String login;
@@ -49,8 +50,8 @@ public class GarcomCrud {
 		lisGarcom.add(g);	
 		
 	}
-	
-	public static void Demitir()
+	@Override
+	public void Demitir()
 	{
 		String login;
 		UsuarioGarcom g;
@@ -80,8 +81,8 @@ public class GarcomCrud {
 		
 	    
 	}
-	
-	public static UsuarioGarcom Buscar(String l)
+	@Override
+	public UsuarioGarcom Buscar(String l)
 	{
 		for(UsuarioGarcom g : lisGarcom)
 		{
@@ -94,8 +95,8 @@ public class GarcomCrud {
 		}
 		return null;
 	}
-	
-	public static boolean BuscarNome(String n)
+	@Override
+	public boolean BuscarNome(String n)
 	{
 		for(UsuarioGarcom g : lisGarcom)
 		{
@@ -109,8 +110,8 @@ public class GarcomCrud {
 		
 		return false;
 	}
-	
-	public static void ListaGarcom()
+	@Override
+	public void ListaGarcom()
 	{	
 		System.out.println();
 		System.out.println("\t garcons");
@@ -123,8 +124,8 @@ public class GarcomCrud {
 		System.out.println("\naperte ENTER para voltar");
 		scanner.nextLine();
 	}
-	
-	public static void ConsutarGarcom()
+	@Override
+	public void ConsutarGarcom()
 	{
 		String login;
 		UsuarioGarcom g;
@@ -142,13 +143,13 @@ public class GarcomCrud {
 		}while(g == null);
 		
 		System.out.println("garcom ");
-		System.out.println("|id | nome | Acesso|");
+		System.out.println("|nome | login | status|");
 		System.out.println("|" + g.getNome() + "|" + g.getLogin() + "|" + g.getStatus() + "|");
 		System.out.println("\naperte ENTER para voltar");
 		scanner.nextLine();
 	}
-	
-	public static void EditarGarcom()
+	@Override
+	public void EditarGarcom()
 	{
 		String loginA;
 		String login;

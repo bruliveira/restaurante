@@ -1,27 +1,23 @@
 package restaurante.repositorio;
-
 import java.util.ArrayList;
 import java.util.Scanner;
-
 import restaurante.dados.Categoria;
 import restaurante.dados.Produto;
 
-
-
-
-public class ProdutoCrud {
+public class ProdutoCrud implements IRepositorioProduto{
 	
 	static int codigo = 0;
 	static Scanner scanner = new Scanner(System.in);
 	
 	private static ArrayList<Produto> lisProduto= new ArrayList<Produto>();
 	
-	public static void Criar()
+	@Override
+	public void Criar()
 	{
 		lisProduto.add(new Produto("laranja",23,12,15,64));
 	}
-	
-	public static void CadastraProduto()
+	@Override
+	public void CadastraProduto()
 	{
 		String nome;
 		String tipo;
@@ -86,8 +82,8 @@ public class ProdutoCrud {
 		lisProduto.add(p);	
 		
 	}
-	
-	public static void Removerproduto()
+	@Override
+	public void Removerproduto()
 	{
 		String nome;
 		Produto p;
@@ -111,8 +107,8 @@ public class ProdutoCrud {
 		
 	    
 	}
-	
-	public static Produto Buscar(String l)
+	@Override
+	public Produto Buscar(String l)
 	{
 		for(Produto p : lisProduto)
 		{
@@ -125,8 +121,8 @@ public class ProdutoCrud {
 		}
 		return null;
 	}
-	
-	public static boolean BuscarNome(String n)
+	@Override
+	public boolean BuscarNome(String n)
 	{
 		for(Produto p : lisProduto)
 		{
@@ -140,8 +136,8 @@ public class ProdutoCrud {
 		
 		return false;
 	}
-	
-	public static void ListaProduto()
+	@Override
+	public void ListaProduto()
 	{	
 		String categ;
 		Categoria c;
@@ -172,8 +168,8 @@ public class ProdutoCrud {
 		System.out.println("\naperte ENTER para voltar");
 		scanner.nextLine();
 	}
-	
-	public static void ConsutarTipo()
+	@Override
+	public void ConsutarTipo()
 	{
 		String nome;
 		 Produto p;
@@ -195,9 +191,8 @@ public class ProdutoCrud {
 		System.out.println("\naperte ENTER para voltar");
 		scanner.nextLine();
 	}
-	
-	
-	public static void EditarProduto()
+	@Override
+	public void EditarProduto()
 	{
 		String nomeA;
 		String nome;

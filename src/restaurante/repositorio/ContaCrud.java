@@ -4,9 +4,10 @@ import java.util.ArrayList;
 import restaurante.dados.Conta;
 import restaurante.dados.Pedido;
 
-public class ContaCrud {
+public class ContaCrud implements IRepositorioConta{
     public ArrayList<Conta> listConta = new ArrayList<Conta>();
 
+    @Override
     public void addConta(Conta conta, Pedido pedidos){
         double totalConta = conta.getTotal() + pedidos.getTotal();
         Conta contaAdd = null;
@@ -25,12 +26,14 @@ public class ContaCrud {
             conta.setTotal(totalConta);
         }
     }
+    @Override
     public void listarTodasConta(){
         System.out.println("----- Todas as contas -----");
         for(Conta contas: listConta){
             System.out.println(contas);
         }
     }
+    @Override
     public void listarTodasContaAbertas(){
         System.out.println("----- Contas em aberto -----");
         for(Conta contas: listConta){
@@ -39,6 +42,7 @@ public class ContaCrud {
             }
         }
     }
+    @Override
     public Conta buscarConta(int codConta){
         for(Conta contas: listConta){
             if(codConta == contas.getCodConta()){
@@ -47,6 +51,7 @@ public class ContaCrud {
         }
         return null;
     }
+    @Override
     public void removerConta(int codConta){
         Conta removeConta = buscarConta(codConta);
         if(removeConta != null){
@@ -55,6 +60,7 @@ public class ContaCrud {
             System.out.println("-> Conta não encontrada no sistema ");
         }
     }
+    @Override
     public void finalizarConta(int codConta){
         Conta finalizaConta = buscarConta(codConta);
         if(finalizaConta != null){
@@ -65,6 +71,7 @@ public class ContaCrud {
             System.out.println("\n-> Conta não encontrada no sistema ");
         }
     }
+    @Override
     public void alterarConta(int codContaAnterior, int codContaNova){
         Conta alteraConta = buscarConta(codContaAnterior);
         if(alteraConta != null){
