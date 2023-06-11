@@ -2,6 +2,9 @@ package restaurante.dados;
 
 import java.util.Scanner;
 
+import restaurante.excecoes.JaExiste;
+import restaurante.excecoes.NaoExiste;
+import restaurante.excecoes.NumeroNegativo;
 import restaurante.repositorio.CategoriaCrud;
 import restaurante.repositorio.GarcomCrud;
 import restaurante.repositorio.ProdutoCrud;
@@ -17,201 +20,190 @@ public class UsuarioAdministrador extends Usuario {
 		super(nome,login,senha);
 	}
 	
-	public void TelaAdministrador()
+	public void CadastraGarcom(String nome,String login, String senha) throws JaExiste
 	{
-int opcao;
+		if(GarcomCrud.BuscarNome(login))
+		{
+			throw new JaExiste();
+		}
+		else
+		{
+			UsuarioGarcom g = new UsuarioGarcom(nome,login,senha);
+			GarcomCrud.CadastraGarcom(g);
+		}
 		
-		do
-		{
-			try
-			{
-				System.out.println("_____________________________________");
-				System.out.println("escolha um numero");
-				System.out.println("-------------------------------------");
-				System.out.println("1 cadastro garcom \n2 cadastro produto \n3 cadastro categoria  \n4 voltar");
-				System.out.println("_____________________________________");
-				opcao = scanner.nextInt();
-			}
-			catch(Exception e)
-			{
-				scanner.next();
-				opcao = 0;
-			}
-			switch(opcao)
-			{
-			case 1:
-				CadastroGarcom();
-				break;
-				
-			case 2:
-				CadastroProduto();
-				break;
-				
-			case 3:
-				CadastroCategoria();
-				break;
-				
-			case 4:
-				break;
-				
-			default :
-				System.out.println("----- numero invalido -----");
-				break;
-			}
-			
-		}while(opcao != 4);
 	}
-	
-	void CadastroGarcom()
+
+	public String ListaGarcom()
 	{
-		int opcao;
-		do
-		{
-			try
-			{
-				System.out.println("_____________________________________");
-				System.out.println("escolha um numero");
-				System.out.println("-------------------------------------");
-				System.out.println("1 add garcom \n2 lista de garcons \n3 editar garcom \n4 demitir garcom \n5 voltar");
-				opcao = scanner.nextInt();
-				System.out.println("_____________________________________");
-			}
-			catch(Exception e)
-			{
-				scanner.next();
-				opcao = 0;
-			}
-			switch(opcao)
-			{
-			case 1:
-				GarcomCrud.CadastraGarcom();
-				break;
-				
-			case 2:
-				GarcomCrud.ListaGarcom();
-				 
-				break;
-			
-			case 3:
-				GarcomCrud.EditarGarcom();
-				break;
-				
-			case 4:
-				GarcomCrud.Demitir();
-				break;
-				
-			case 5:
-				System.out.println("voltar");
-				break;
-				
-			default :
-				
-				System.out.println("----- numero invalido -----");
-				break;
-			}
-			
-		}while(opcao != 5);
+		return GarcomCrud.ListaGarcom();
 	}
-	
-	void CadastroProduto()
+
+	public void EditarProduto(String nomeA, double precoN) throws NaoExiste ,NumeroNegativo
 	{
-		int opcao;
-		do
+		Produto p = ProdutoCrud.Buscar(nomeA);
+		if(p != null)
 		{
-			try
+			if(precoN <= 0)
 			{
-				System.out.println("_____________________________________");
-				System.out.println("escolha um numero");
-				System.out.println("-------------------------------------");
-				System.out.println("1 add produto \n2 lista de produto \n3 editar produto \n4 remover produto \n5 voltar");
-				opcao = scanner.nextInt();
-				System.out.println("_____________________________________");
+				throw new NumeroNegativo();
+			 
 			}
-			catch(Exception e)
+			else
 			{
-				scanner.next();
-				opcao = 0;
+				ProdutoCrud.EditarProduto(precoN, p);
 			}
-			switch(opcao)
-			{
-			case 1:
-				ProdutoCrud.CadastraProduto();
-				break;
-				
-			case 2:
-				ProdutoCrud.ListaProduto();
-				 
-				break;
-			
-			case 3:
-				ProdutoCrud.EditarProduto();
-				break;
-				
-			case 4:
-				ProdutoCrud.Removerproduto();
-				break;
-				
-			case 5:
-				System.out.println("voltar");
-				break;
-				
-			default :
-				
-				System.out.println("----- numero invalido -----");
-				break;
-			}
-			
-		}while(opcao != 5);
+		}
+		else
+		{
+			throw new NaoExiste();
+		}
+		
 	}
-	
-	void CadastroCategoria()
+
+	public void DemitirGarcom(String loginD) throws NaoExiste 
 	{
-		int opcao;
-		do
+		UsuarioGarcom g = GarcomCrud.Buscar(loginD);
+		if(g != null)
 		{
-			try
+			GarcomCrud.Demitir(g);
+		}
+		else
+		{
+			throw new NaoExiste();
+		}
+		
+	}
+
+	public void CadastraProduto(String nome, String tipo, Double preco, int quantidade) throws JaExiste, NaoExiste, NumeroNegativo
+	{
+		if(ProdutoCrud.BuscarNome(nome))
+		{
+			throw new JaExiste();
+		}
+		else
+		{
+			Categoria c = CategoriaCrud.Buscar(tipo);
+			if(c != null)
 			{
-				System.out.println("_____________________________________");
-				System.out.println("escolha um numero");
-				System.out.println("-------------------------------------");
-				System.out.println("1 add categoria \n2 lista de categorias \n3 editar categoria \n4 remover categoria \n5 voltar");
-				opcao = scanner.nextInt();
-				System.out.println("_____________________________________");
+				if(preco >= 0 && quantidade >= 0 )
+				{
+					ProdutoCrud.codigo +=1;
+					Produto p = new Produto(nome,c.getCodCategoria(),preco,quantidade,ProdutoCrud.codigo);
+					ProdutoCrud.CadastraProduto(p);
+				}
+				else
+				{
+					throw new NumeroNegativo();
+				}
 			}
-			catch(Exception e)
+			else
 			{
-				scanner.next();
-				opcao = 0;
+				throw new NaoExiste();
 			}
-			switch(opcao)
+		}
+	}
+
+	public String ListaProduto(String tipo) throws NaoExiste
+	{
+		Categoria c = CategoriaCrud.Buscar(tipo);
+		if(c != null)
+		{
+			return ProdutoCrud.ListaProduto(c);
+		}
+		else
+		{
+			throw new NaoExiste();
+		}
+	}
+
+	public void EditarGarcom(String loginA, String loginN, String senhaN) throws NaoExiste ,JaExiste
+	{
+		UsuarioGarcom g = GarcomCrud.Buscar(loginA);
+		if(g != null)
+		{
+			if(GarcomCrud.BuscarNome(loginN))
 			{
-			case 1:
-				CategoriaCrud.CadastraCategoria();
-				break;
-				
-			case 2:
-				CategoriaCrud.ListaCategorias();
-				 
-				break;
-			
-			case 3:
-				CategoriaCrud.EditarCategoria();
-				break;
-				
-			case 4:
-				CategoriaCrud.RemoverCategoria();
-				break;
-				
-			case 5:
-				System.out.println("voltar");
-				break;
-				
-			default :
-				
-				System.out.println("----- numero invalido -----");
-				break;
+			throw new JaExiste();
 			}
-			
-		}while(opcao != 5);
+			else
+			{
+				GarcomCrud.EditarGarcom(loginN, senhaN, g);
+			}
+		}
+		else
+		{
+			throw new NaoExiste();
+		}
+		
+	}
+
+	public void RemoverProduto(String nome) throws NaoExiste 
+	{
+		Produto p = ProdutoCrud.Buscar(nome);
+		if(p != null)
+		{
+			ProdutoCrud.Removerproduto(p);
+		}
+		else
+		{
+			throw new NaoExiste();
+		}
+		
+	}
+	///////////////////////////////////////////////////////////////////////////////////////
+	
+	public void CadastraCategoria(String nome) throws JaExiste
+	{
+		if(CategoriaCrud.BuscarNome(nome))
+		{
+			throw new JaExiste();
+		}
+		else
+		{
+			CategoriaCrud.codigo +=1;
+			Categoria c = new Categoria(nome, CategoriaCrud.codigo);
+			CategoriaCrud.CadastraCategoria(c);
+		}
+	}
+
+	public String ListaCategoria()
+	{
+		return CategoriaCrud.ListaCategoria();
+	}
+
+	public void EditarCategoria(String nomeA, String nomeN) throws NaoExiste ,JaExiste
+	{
+		Categoria c = CategoriaCrud.Buscar(nomeN);
+		if(c != null)
+		{
+			if(CategoriaCrud.BuscarNome(nomeN))
+			{
+			throw new JaExiste();
+			}
+			else
+			{
+				CategoriaCrud.EditarCategoria(nomeN,c);
+			}
+		}
+		else
+		{
+			throw new NaoExiste();
+		}
+		
+	}
+
+	public void RemoverCategoria(String nome) throws NaoExiste 
+	{
+		Categoria c = CategoriaCrud.Buscar(nome);
+		if(c != null)
+		{
+			CategoriaCrud.RemoverCategoria(c);
+		}
+		else
+		{
+			throw new NaoExiste();
+		}
+		
 	}
 }
