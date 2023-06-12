@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import restaurante.dados.Pedido;
 import restaurante.dados.Produto;
 
-public class PedidoCrud{
+public class PedidoCrud implements IPedidoCrud{
     public ArrayList<Pedido> listaPedido = new ArrayList<Pedido>();
 
     public void addPedido(Pedido pedido, Produto produtos){

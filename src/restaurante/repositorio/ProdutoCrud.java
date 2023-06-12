@@ -6,35 +6,32 @@ import java.util.Scanner;
 import restaurante.dados.Categoria;
 import restaurante.dados.Produto;
 
-
-
-
-public class ProdutoCrud {
+public class ProdutoCrud implements IProdutoCrud{
 	
 	public static int codigo = 0;
 	static Scanner scanner = new Scanner(System.in);
 	
 	private static ArrayList<Produto> lisProduto= new ArrayList<Produto>();
 	
-	public static void Criar()
+	public void Criar()
 	{
 		lisProduto.add(new Produto("laranja",23,12,15,64));
 	}
 	
-	public static void CadastraProduto(Produto p)
+	public void CadastraProduto(Produto p)
 	{
 		lisProduto.add(p);	
 		
 	}
 	
-	public static void Removerproduto(Produto p)
+	public void Removerproduto(Produto p)
 	{
 		
 		lisProduto.remove(p);
 
 	}
 	
-	public static Produto Buscar(String l)
+	public Produto Buscar(String l)
 	{
 		for(Produto p : lisProduto)
 		{
@@ -48,7 +45,7 @@ public class ProdutoCrud {
 		return null;
 	}
 	
-	public static boolean BuscarNome(String n)
+	public boolean BuscarNome(String n)
 	{
 		for(Produto p : lisProduto)
 		{
@@ -63,7 +60,7 @@ public class ProdutoCrud {
 		return false;
 	}
 	
-	public static String ListaProduto(Categoria c)
+	public String ListaProduto(Categoria c)
 	{	
 		String lista= "";
 		
@@ -81,7 +78,7 @@ public class ProdutoCrud {
 	}
 	
 	
-	public static void EditarProduto(double preco, Produto p)
+	public void EditarProduto(double preco, Produto p)
 	{
 		p.setPreco(preco);
 		

@@ -12,9 +12,9 @@ public class Teste{
 
         //cadastros
         UsuarioAdministrador adm = new UsuarioAdministrador("eu","eu","123");
-        ProdutoCrud.Criar();
-        GarcomCrud.criar();
-        CategoriaCrud.Criar();
+        new ProdutoCrud().Criar();
+        new GarcomCrud().criar();
+        new CategoriaCrud().Criar();
         //menu
         Menu menu = new Menu();
         menu.TelaAdministrador(adm);

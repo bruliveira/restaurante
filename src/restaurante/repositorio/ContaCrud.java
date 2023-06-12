@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import restaurante.dados.Conta;
 import restaurante.dados.Pedido;
 
-public class ContaCrud {
+public class ContaCrud implements IContaCrud{
     public ArrayList<Conta> listConta = new ArrayList<Conta>();
 
     public void addConta(Conta conta, Pedido pedidos){

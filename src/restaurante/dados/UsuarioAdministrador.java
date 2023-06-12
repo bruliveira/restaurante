@@ -22,26 +22,26 @@ public class UsuarioAdministrador extends Usuario {
 	
 	public void CadastraGarcom(String nome,String login, String senha) throws JaExiste
 	{
-		if(GarcomCrud.BuscarNome(login))
+		if(new GarcomCrud().BuscarNome(login))
 		{
 			throw new JaExiste();
 		}
 		else
 		{
 			UsuarioGarcom g = new UsuarioGarcom(nome,login,senha);
-			GarcomCrud.CadastraGarcom(g);
+			new GarcomCrud().CadastraGarcom(g);
 		}
 		
 	}
 
 	public String ListaGarcom()
 	{
-		return GarcomCrud.ListaGarcom();
+		return new GarcomCrud().ListaGarcom();
 	}
 
 	public void EditarProduto(String nomeA, double precoN) throws NaoExiste ,NumeroNegativo
 	{
-		Produto p = ProdutoCrud.Buscar(nomeA);
+		Produto p = new ProdutoCrud().Buscar(nomeA);
 		if(p != null)
 		{
 			if(precoN <= 0)
@@ -51,7 +51,7 @@ public class UsuarioAdministrador extends Usuario {
 			}
 			else
 			{
-				ProdutoCrud.EditarProduto(precoN, p);
+				new ProdutoCrud().EditarProduto(precoN, p);
 			}
 		}
 		else
@@ -63,10 +63,10 @@ public class UsuarioAdministrador extends Usuario {
 
 	public void DemitirGarcom(String loginD) throws NaoExiste 
 	{
-		UsuarioGarcom g = GarcomCrud.Buscar(loginD);
+		UsuarioGarcom g = new GarcomCrud().Buscar(loginD);
 		if(g != null)
 		{
-			GarcomCrud.Demitir(g);
+			new GarcomCrud().Demitir(g);
 		}
 		else
 		{
@@ -77,20 +77,20 @@ public class UsuarioAdministrador extends Usuario {
 
 	public void CadastraProduto(String nome, String tipo, Double preco, int quantidade) throws JaExiste, NaoExiste, NumeroNegativo
 	{
-		if(ProdutoCrud.BuscarNome(nome))
+		if(new ProdutoCrud().BuscarNome(nome))
 		{
 			throw new JaExiste();
 		}
 		else
 		{
-			Categoria c = CategoriaCrud.Buscar(tipo);
+			Categoria c = new CategoriaCrud().Buscar(tipo);
 			if(c != null)
 			{
 				if(preco >= 0 && quantidade >= 0 )
 				{
 					ProdutoCrud.codigo +=1;
 					Produto p = new Produto(nome,c.getCodCategoria(),preco,quantidade,ProdutoCrud.codigo);
-					ProdutoCrud.CadastraProduto(p);
+					new ProdutoCrud().CadastraProduto(p);
 				}
 				else
 				{
@@ -106,10 +106,10 @@ public class UsuarioAdministrador extends Usuario {
 
 	public String ListaProduto(String tipo) throws NaoExiste
 	{
-		Categoria c = CategoriaCrud.Buscar(tipo);
+		Categoria c = new CategoriaCrud().Buscar(tipo);
 		if(c != null)
 		{
-			return ProdutoCrud.ListaProduto(c);
+			return new ProdutoCrud().ListaProduto(c);
 		}
 		else
 		{
@@ -119,16 +119,16 @@ public class UsuarioAdministrador extends Usuario {
 
 	public void EditarGarcom(String loginA, String loginN, String senhaN) throws NaoExiste ,JaExiste
 	{
-		UsuarioGarcom g = GarcomCrud.Buscar(loginA);
+		UsuarioGarcom g = new GarcomCrud().Buscar(loginA);
 		if(g != null)
 		{
-			if(GarcomCrud.BuscarNome(loginN))
+			if(new GarcomCrud().BuscarNome(loginN))
 			{
 			throw new JaExiste();
 			}
 			else
 			{
-				GarcomCrud.EditarGarcom(loginN, senhaN, g);
+				new GarcomCrud().EditarGarcom(loginN, senhaN, g);
 			}
 		}
 		else
@@ -140,10 +140,10 @@ public class UsuarioAdministrador extends Usuario {
 
 	public void RemoverProduto(String nome) throws NaoExiste 
 	{
-		Produto p = ProdutoCrud.Buscar(nome);
+		Produto p = new ProdutoCrud().Buscar(nome);
 		if(p != null)
 		{
-			ProdutoCrud.Removerproduto(p);
+			new ProdutoCrud().Removerproduto(p);
 		}
 		else
 		{
@@ -151,11 +151,10 @@ public class UsuarioAdministrador extends Usuario {
 		}
 		
 	}
-	///////////////////////////////////////////////////////////////////////////////////////
 	
 	public void CadastraCategoria(String nome) throws JaExiste
 	{
-		if(CategoriaCrud.BuscarNome(nome))
+		if(new CategoriaCrud().BuscarNome(nome))
 		{
 			throw new JaExiste();
 		}
@@ -163,27 +162,27 @@ public class UsuarioAdministrador extends Usuario {
 		{
 			CategoriaCrud.codigo +=1;
 			Categoria c = new Categoria(nome, CategoriaCrud.codigo);
-			CategoriaCrud.CadastraCategoria(c);
+			new CategoriaCrud().CadastraCategoria(c);
 		}
 	}
 
 	public String ListaCategoria()
 	{
-		return CategoriaCrud.ListaCategoria();
+		return new CategoriaCrud().ListaCategoria();
 	}
 
 	public void EditarCategoria(String nomeA, String nomeN) throws NaoExiste ,JaExiste
 	{
-		Categoria c = CategoriaCrud.Buscar(nomeN);
+		Categoria c = new CategoriaCrud().Buscar(nomeN);
 		if(c != null)
 		{
-			if(CategoriaCrud.BuscarNome(nomeN))
+			if(new CategoriaCrud().BuscarNome(nomeN))
 			{
 			throw new JaExiste();
 			}
 			else
 			{
-				CategoriaCrud.EditarCategoria(nomeN,c);
+				new CategoriaCrud().EditarCategoria(nomeN,c);
 			}
 		}
 		else
@@ -195,10 +194,10 @@ public class UsuarioAdministrador extends Usuario {
 
 	public void RemoverCategoria(String nome) throws NaoExiste 
 	{
-		Categoria c = CategoriaCrud.Buscar(nome);
+		Categoria c = new CategoriaCrud().Buscar(nome);
 		if(c != null)
 		{
-			CategoriaCrud.RemoverCategoria(c);
+			new CategoriaCrud().RemoverCategoria(c);
 		}
 		else
 		{

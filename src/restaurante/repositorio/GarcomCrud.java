@@ -6,13 +6,13 @@ import java.util.Scanner;
 import restaurante.dados.UsuarioGarcom;
 
 
-public class GarcomCrud {
+public class GarcomCrud implements IGarcomCrud{
 	
 	static Scanner scanner = new Scanner(System.in);
 	
 	private static ArrayList<UsuarioGarcom> lisGarcom = new ArrayList<UsuarioGarcom>();
 	
-	public static void criar()
+	public void criar()
 	{
 		lisGarcom.add(new UsuarioGarcom("g1","ga1","321"));
 		lisGarcom.add(new UsuarioGarcom("g2","ga2","3241"));
@@ -20,12 +20,12 @@ public class GarcomCrud {
 		lisGarcom.add(new UsuarioGarcom("g4","ga4","32451"));
 	}
 	
-	public static void CadastraGarcom(UsuarioGarcom g)
+	public void CadastraGarcom(UsuarioGarcom g)
 	{
 		lisGarcom.add(g);	
 	}
 
-	public static boolean BuscarNome(String n)
+	public boolean BuscarNome(String n)
 	{
 		for(UsuarioGarcom g : lisGarcom)
 		{
@@ -40,7 +40,7 @@ public class GarcomCrud {
 		return false;
 	}
 
-	public static String ListaGarcom()
+	public String ListaGarcom()
 	{
 		String lista = "";
 
@@ -53,7 +53,7 @@ public class GarcomCrud {
 		return lista;
 	}
 	
-	public static void EditarGarcom(String loginN, String senhaN, UsuarioGarcom g)
+	public void EditarGarcom(String loginN, String senhaN, UsuarioGarcom g)
 	{
 			
 		g.setLogin(loginN);
@@ -61,12 +61,12 @@ public class GarcomCrud {
 		
 	}
 
-	public static void Demitir(UsuarioGarcom g)
+	public void Demitir(UsuarioGarcom g)
 	{
 		g.setStatus("demitido");
 	}
 	
-	public static UsuarioGarcom Buscar(String l)
+	public UsuarioGarcom Buscar(String l)
 	{
 		for(UsuarioGarcom g : lisGarcom)
 		{

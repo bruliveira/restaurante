@@ -2,37 +2,38 @@ package restaurante.repositorio;
 
 import java.util.ArrayList;
 import java.util.Scanner;
-
 import restaurante.dados.Categoria;
 
-
-
-public class CategoriaCrud {
+public class CategoriaCrud implements ICategoriaCrud{
 	public static int codigo = 0;
 	static Scanner scanner = new Scanner(System.in);
 	
 	private static ArrayList<Categoria> lisCategoria = new ArrayList<Categoria>();
 	
-	public static void Criar()
+	@Override
+	public void Criar()
 	{
 		lisCategoria.add(new Categoria("suco",23));
 	}
 	
-	public static void CadastraCategoria(Categoria c)
+	@Override
+	public void CadastraCategoria(Categoria c)
 	{
 
 		lisCategoria.add(c);	
 		
 	}
-	
-	public static void RemoverCategoria(Categoria c)
+
+	@Override
+	public void RemoverCategoria(Categoria c)
 	{
 		
 		lisCategoria.remove(c);
 	  
 	}
 	
-	public static Categoria Buscar(String l)
+	@Override
+	public Categoria Buscar(String l)
 	{
 		for(Categoria c : lisCategoria)
 		{
@@ -45,8 +46,9 @@ public class CategoriaCrud {
 		}
 		return null;
 	}
-	
-	public static boolean BuscarNome(String n)
+
+	@Override
+	public boolean BuscarNome(String n)
 	{
 		for(Categoria c : lisCategoria)
 		{
@@ -61,7 +63,8 @@ public class CategoriaCrud {
 		return false;
 	}
 	
-	public static String ListaCategoria()
+	@Override
+	public String ListaCategoria()
 	{	
 		String lista = "";
 		
@@ -73,7 +76,8 @@ public class CategoriaCrud {
 		return lista;
 	}
 	
-	public static void EditarCategoria(String nome, Categoria c)
+	@Override
+	public void EditarCategoria(String nome, Categoria c)
 	{
 	
 		c.setTipo(nome);
