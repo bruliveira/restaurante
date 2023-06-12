@@ -4,6 +4,7 @@ import restaurante.dados.Conta;
 import restaurante.dados.Pedido;
 
 public interface IContaCrud {
+    void criar();
     void addConta(Conta conta, Pedido pedidos);
     void listarTodasConta();
     void listarTodasContaAbertas();

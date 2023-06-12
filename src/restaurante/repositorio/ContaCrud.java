@@ -6,7 +6,14 @@ import restaurante.dados.Pedido;
 
 public class ContaCrud implements IContaCrud{
     public ArrayList<Conta> listConta = new ArrayList<Conta>();
+    Conta conta1 = new Conta(1, 0, true);
+    Pedido pedido1 = new Pedido(1,  10, false);
 
+    @Override
+    public void criar(){
+        addConta(conta1, pedido1);
+    }
+    @Override
     public void addConta(Conta conta, Pedido pedidos){
         double totalConta = conta.getTotal() + pedidos.getTotal();
         Conta contaAdd = null;
@@ -25,12 +32,14 @@ public class ContaCrud implements IContaCrud{
             conta.setTotal(totalConta);
         }
     }
+    @Override
     public void listarTodasConta(){
         System.out.println("----- Todas as contas -----");
         for(Conta contas: listConta){
             System.out.println(contas);
         }
     }
+    @Override
     public void listarTodasContaAbertas(){
         System.out.println("----- Contas em aberto -----");
         for(Conta contas: listConta){
@@ -39,6 +48,7 @@ public class ContaCrud implements IContaCrud{
             }
         }
     }
+    @Override
     public Conta buscarConta(int codConta){
         for(Conta contas: listConta){
             if(codConta == contas.getCodConta()){
@@ -47,6 +57,7 @@ public class ContaCrud implements IContaCrud{
         }
         return null;
     }
+    @Override
     public void removerConta(int codConta){
         Conta removeConta = buscarConta(codConta);
         if(removeConta != null){
@@ -55,6 +66,7 @@ public class ContaCrud implements IContaCrud{
             System.out.println("-> Conta não encontrada no sistema ");
         }
     }
+    @Override
     public void finalizarConta(int codConta){
         Conta finalizaConta = buscarConta(codConta);
         if(finalizaConta != null){
@@ -65,6 +77,7 @@ public class ContaCrud implements IContaCrud{
             System.out.println("\n-> Conta não encontrada no sistema ");
         }
     }
+    @Override
     public void alterarConta(int codContaAnterior, int codContaNova){
         Conta alteraConta = buscarConta(codContaAnterior);
         if(alteraConta != null){
