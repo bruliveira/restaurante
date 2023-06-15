@@ -1,58 +1,47 @@
 package restaurante.dados;
 
 import java.util.ArrayList;
+import java.util.List;
 
-public class Pedido{
+public class Pedido {
     private int codPedido;
-    private int codMesa;
-    public ArrayList<Produto> listcodProduto = new ArrayList<Produto>();
-    private double total;
-    private boolean statusPedido;
+    private List<Produto> itens;
+    private double valorPago;
 
-    public Pedido(int codPedido, int codMesa, double total, boolean status){
+    public Pedido(int codPedido) {
         this.codPedido = codPedido;
-        this.codMesa = codMesa;
-        this.total = total;
-        this.statusPedido = status;
+        this.itens = new ArrayList<>();
     }
-    @Override
-	public String toString() {
-		String textoPedidos = "Pedido: " + this.codPedido + 
-				" -> Produtos: " + this.listcodProduto + 
-                " -> Mesa: " + this.codMesa + 
-                " -> Total: " + this.total + 
-                " -> Status do Pedido: " + this.statusPedido ;
-		return textoPedidos;
-	}
 
     public int getCodPedido() {
         return codPedido;
     }
+
     public void setCodPedido(int codPedido) {
         this.codPedido = codPedido;
     }
-    public int getCodMesa() {
-        return codMesa;
+
+    public List<Produto> getItens() {
+        return itens;
     }
-    public void setCodMesa(int codMesa) {
-        this.codMesa = codMesa;
+
+    public void setItens(List<Produto> itens) {
+        this.itens = itens;
     }
-    public ArrayList<Produto> getListcodProduto() {
-        return listcodProduto;
+
+    public double getTotalPedido() {
+        double totalPedido = 0.0;
+        for (Produto item : itens) {
+            totalPedido += item.getPrecoProduto() * item.getQtdProduto();
+        }
+        return totalPedido;
     }
-    public void setListcodProduto(ArrayList<Produto> listcodProduto) {
-        this.listcodProduto = listcodProduto;
+
+    public double getValorPago() {
+        return valorPago;
     }
-    public double getTotal() {
-        return total;
-    }
-    public void setTotal(double total) {
-        this.total = total;
-    }
-    public boolean isStatusPedido() {
-        return statusPedido;
-    }
-    public void setStatusPedido(boolean statusPedido) {
-        this.statusPedido = statusPedido;
+
+    public void setValorPago(double valorPago) {
+        this.valorPago = valorPago;
     }
 }

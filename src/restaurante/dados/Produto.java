@@ -1,64 +1,57 @@
 package restaurante.dados;
 
 public class Produto {
-	private String nome;
-	private int codigo;
-	private int codigoCategoria;
-	private double preco;
-	private int quantidade;
-	
-	public Produto(String nome, int codigoCategoria,double preco,int quantidade ,int codigo)
-	{
-		this.nome = nome;
-		this.codigo = codigo;
-		this.codigoCategoria = codigoCategoria;
-		this.preco = preco;
-		this.quantidade = quantidade;
-		
-	}
-	@Override
-	public String toString() {
-		String textoProduto = "- " + this.nome + ", Código: " + this.codigo + ", Categoria: " + this.codigoCategoria + ", Preço: " + this.preco + ", Quantidade: " + this.quantidade;
-		return textoProduto;
+	private int codProduto;
+	private int codCategoria;
+	private String nomeProduto;
+	private double precoProduto;
+	private int qtdProduto;
+
+	public Produto(int codProduto, int codCategoria, String nomeProduto, double precoProduto, int qtdProduto) {
+		this.codProduto = codProduto;
+		this.codCategoria = codCategoria;
+		this.nomeProduto = nomeProduto;
+		this.precoProduto = precoProduto;
+		this.qtdProduto = qtdProduto;
 	}
 
-	public String getNome() {
-		return nome;
+	public int getCodProduto() {
+		return codProduto;
 	}
 
-	public void setNome(String nome) {
-		this.nome = nome;
+	public void setCodProduto(int codProduto) {
+		this.codProduto = codProduto;
 	}
 
-	public int getCodigo() {
-		return codigo;
+	public int getCodCategoria() {
+		return codCategoria;
 	}
 
-	public void setCodigo(int codigo) {
-		this.codigo = codigo;
+	public void setCodCategoria(int codCategoria) {
+		this.codCategoria = codCategoria;
 	}
 
-	public int getCodigoCategoria() {
-		return codigoCategoria;
+	public String getNomeProduto() {
+		return nomeProduto;
 	}
 
-	public void setCodigoCategoria(int codigoCategoria) {
-		this.codigoCategoria = codigoCategoria;
+	public void setNomeProduto(String nomeProduto) {
+		this.nomeProduto = nomeProduto;
 	}
 
-	public double getPreco() {
-		return preco;
+	public double getPrecoProduto() {
+		return precoProduto;
 	}
 
-	public void setPreco(double preco) {
-		this.preco = preco;
+	public void setPrecoProduto(double precoProduto) {
+		this.precoProduto = precoProduto;
 	}
 
-	public int getQuantidade() {
-		return quantidade;
+	public int getQtdProduto() {
+		return qtdProduto;
 	}
 
-	public void setQuantidade(int quantidade) {
-		this.quantidade = quantidade;
+	public void setQtdProduto(int qtdProduto) {
+		this.qtdProduto = qtdProduto;
 	}
 }

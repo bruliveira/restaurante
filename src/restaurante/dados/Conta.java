@@ -1,6 +1,6 @@
 package restaurante.dados;
 
-import java.util.ArrayList;
+import java.util.*;
 
 public class Conta {
     public int codConta;
@@ -8,44 +8,59 @@ public class Conta {
     public boolean statusConta;
     public ArrayList<Pedido> listCodPedido = new ArrayList<Pedido>();
 
-    public Conta(){
+    public Conta() {
     }
-    public Conta(int codConta, double total, boolean statusConta){
+
+    public Conta(int codConta, double total, boolean statusConta) {
         this.codConta = codConta;
         this.total = total;
         this.statusConta = statusConta;
     }
+
     @Override
-	public String toString() {
-		String textoContas = "-> Conta " + this.codConta + 
-				"\nPedidos: " + this.listCodPedido + 
-                "\nTotal: " + this.total + 
+    public String toString() {
+        String textoContas = "-> Conta " + this.codConta +
+                "\nPedidos: " + this.listCodPedido +
+                "\nTotal: " + this.total +
                 "\nStatus da conta: " + this.statusConta;
-		return textoContas;
-	}
+        return textoContas;
+    }
 
     public int getCodConta() {
         return codConta;
     }
+
     public void setCodConta(int codConta) {
         this.codConta = codConta;
     }
+
     public double getTotal() {
         return total;
     }
+
     public void setTotal(double total) {
         this.total = total;
     }
+
     public boolean getStatusConta() {
         return statusConta;
     }
+
     public void setStatusConta(boolean statusConta) {
         this.statusConta = statusConta;
     }
+
     public ArrayList<Pedido> getListCodPedido() {
         return listCodPedido;
     }
+
     public void setListCodPedido(ArrayList<Pedido> listCodPedido) {
         this.listCodPedido = listCodPedido;
+    }
+
+    public void addConta(Conta conta, Pedido pedido) {
+    }
+
+    public void finalizarConta(int i) {
     }
 }

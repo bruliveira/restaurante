@@ -1,17 +1,15 @@
 package restaurante.dados;
 
-
 public class Usuario {
-	
+
 	protected String nome;
 	protected String login;
 	protected String senha;
-	
-	public Usuario(String nome, String login, String senha)
-	{
+
+	public Usuario(String nome, String login, String senha) {
 		this.nome = nome;
-		this.senha = senha;
 		this.login = login;
+		this.senha = senha;
 	}
 
 	public String getNome() {
@@ -36,5 +34,10 @@ public class Usuario {
 
 	public void setSenha(String senha) {
 		this.senha = senha;
+	}
+
+	// Retorna a qual tipo o usuário pertence (gerente ou garçom)
+	public String getTipo() {
+		return "Usuário";
 	}
 }

@@ -1,16 +1,13 @@
 package restaurante.dados;
 
-
 public class Categoria {
 	private int codCategoria;
-	private String tipo;
-	
-	public Categoria(String tipo, int cod)
-	{
-		this.tipo = tipo;
-		this.codCategoria = cod;
+	public String tipoCategoria;
+
+	public Categoria(int codCategoria, String tipoCategoria) {
+		this.codCategoria = codCategoria;
+		this.tipoCategoria = tipoCategoria;
 	}
-	
 
 	public int getCodCategoria() {
 		return codCategoria;
@@ -20,12 +17,12 @@ public class Categoria {
 		this.codCategoria = codCategoria;
 	}
 
-	public String getTipo() {
-		return tipo;
+	public String getTipoCategoria() {
+		return tipoCategoria;
 	}
 
-	public void setTipo(String tipo) {
-		this.tipo = tipo;
+	public void setTipoCategoria(String tipoCategoria) {
+		this.tipoCategoria = tipoCategoria;
 	}
-	
+
 }
